@@ -23,7 +23,7 @@ import os
 
 def main():
 
-    airtable = Airtable(os.environ.get('AIRTABLEAPP'), 'Companies', os.environ.get('AIRTABLEKEY')) 
+    airtable = airtable(os.environ.get('AIRTABLEAPP'), 'Companies', os.environ.get('AIRTABLEKEY')) 
     
     allRecords = airtable.get_all()
 
