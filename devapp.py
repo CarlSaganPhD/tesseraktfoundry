@@ -1,7 +1,7 @@
 # Import libraries
 import streamlit as st
 import pandas as pd
-from airtable import airtable
+from airtable import Airtable
 import os
 
 #---------------------------------
@@ -23,11 +23,10 @@ import os
 
 def main():
 
-    airtable = airtable(os.environ.get('AIRTABLEAPP'), 'Companies', os.environ.get('AIRTABLEKEY')) 
+    airtable = Airtable(os.environ.get('AIRTABLEAPP'), 'Companies', os.environ.get('AIRTABLEKEY')) 
 
     allRecords = airtable.get_all()
 
-    image = st.sidebar.markdown("![Alt Text](https://i.imgur.com/dN0puJM.png)")     #Logo Image
     sidebar = st.sidebar.title("Tesserakt Foundry")                            #Title Text
     sidebarselect = st.sidebar.radio("Select a Tool", options=["Upload","View Inventory", "Analytics"])    #Page Select
 
