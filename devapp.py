@@ -1,7 +1,7 @@
 # Import libraries
 import streamlit as st
 import pandas as pd
-from airtable import Airtable
+from airtable import airtable
 import os
 
 #---------------------------------
@@ -23,7 +23,7 @@ import os
 
 def main():
 
-    airtable = Airtable(os.environ.get('AIRTABLEAPP'), 'Companies', os.environ.get('AIRTABLEKEY')) 
+    airtable = airtable(os.environ.get('AIRTABLEAPP'), 'Companies', os.environ.get('AIRTABLEKEY')) 
 
     allRecords = airtable.get_all()
 
