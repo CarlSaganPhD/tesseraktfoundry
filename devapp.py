@@ -1,6 +1,8 @@
 # Import libraries
 import streamlit as st
 import pandas as pd
+from airtable import Airtable
+import os
 
 #---------------------------------
 # Tesserakt Foundry Panel
@@ -8,18 +10,22 @@ import pandas as pd
 #
 # Creator: Ryan Dinubilo
 # Creation Date: 1/16/2023
-# Current Version: 1.00
+# Current Version: 1.01
 #
 #
 # Changelog ---------------------
 # Revision Dates:
-# Version 1.12 - 3/12/2021
-# See changelog doc
+# Version 1.01 - 1/16/2023
+# - Added airtable support
 #
 #
 #
 
 def main():
+
+    airtable = Airtable(os.environ.get('AIRTABLEAPP'), 'Companies', os.environ.get('AIRTABLEKEY')) 
+
+    allRecords = airtable.get_all()
 
     image = st.sidebar.markdown("![Alt Text](https://i.imgur.com/dN0puJM.png)")     #Logo Image
     sidebar = st.sidebar.title("Tesserakt Foundry")                            #Title Text
@@ -31,6 +37,9 @@ def main():
     if sidebarselect == "Upload":
 
         st.write("Upload")
+
+        if st.button("Test"):
+            st.write("allRecords")
 
     elif sidebarselect == "View Inventory":
         st.write("View Inventory")
