@@ -1,7 +1,7 @@
 # Import libraries
 import streamlit as st
 import pandas as pd
-import airtable
+from airtable import Airtable
 import os
 
 #---------------------------------
@@ -23,10 +23,9 @@ import os
 
 def main():
 
-    airtable = Airtable(os.environ.get('AIRTABLEAPP'), 'Companies', os.environ.get('AIRTABLEKEY')) 
+    wtf = Airtable(os.environ.get('AIRTABLEAPP'), 'Companies', os.environ.get('AIRTABLEKEY')) 
     
-    record = airtable.match("Name", "farm-ng")
-    values = record['fields']['FundraisingTotal']
+    wtf.get_all()
 
     sidebar = st.sidebar.title("Tesserakt Foundry")                            #Title Text
     sidebarselect = st.sidebar.radio("Select a Tool", options=["Upload","View Inventory", "Analytics"])    #Page Select
