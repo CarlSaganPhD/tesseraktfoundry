@@ -25,7 +25,7 @@ def main():
 
     airtable = Airtable(os.environ.get('AIRTABLEAPP'), 'Companies', os.environ.get('AIRTABLEKEY')) 
     
-    record = airtable.match("Name", "farm-ng")
+    record = airtable.Airtable.match("Name", "farm-ng")
     values = record['fields']['FundraisingTotal']
 
     sidebar = st.sidebar.title("Tesserakt Foundry")                            #Title Text
