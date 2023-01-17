@@ -1,7 +1,7 @@
 # Import libraries
 import streamlit as st
 import pandas as pd
-from airtable import Airtable
+from airtable import airtable
 import os
 
 #---------------------------------
