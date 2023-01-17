@@ -24,6 +24,8 @@ import os
 def main():
 
     airtable = Airtable(os.environ.get('AIRTABLEAPP'), 'Companies', os.environ.get('AIRTABLEKEY')) 
+    
+    allRecords = airtable.get_all()
 
     sidebar = st.sidebar.title("Tesserakt Foundry")                            #Title Text
     sidebarselect = st.sidebar.radio("Select a Tool", options=["Upload","View Inventory", "Analytics"])    #Page Select
@@ -34,6 +36,9 @@ def main():
     if sidebarselect == "Upload":
 
         st.write("Upload")
+        
+        if st.button("Airtable Test"):
+            st.write(allRecords)
 
     elif sidebarselect == "View Inventory":
         st.write("View Inventory")
